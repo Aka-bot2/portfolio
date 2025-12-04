@@ -1,0 +1,1187 @@
+/* ===== Base Reset ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html {
+    /* scroll-snap-type: y proximity; /* Fully disabled for smooth, non-snappy scrolling */
+    overflow-x: hidden;
+}
+body { 
+    font-family: 'Poppins', sans-serif; 
+    background: #000000; /* UPDATED: True Black */
+    color: #FFFFFF; /* UPDATED: Clean White */
+    line-height: 1.6; 
+    /* height: 100vh; /* Removed to allow natural flow without strict snapping */
+    overflow-y: auto; /* Allow vertical scroll freely */
+    /* scroll-snap-type: y proximity; /* Fully disabled for smooth, non-snappy scrolling */
+    scroll-behavior: smooth; 
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+/* ===== Header & Navbar ===== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(0,0,0,0.95); /* UPDATED: True Black translucent */
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.name { font-size: 22px; font-weight: bold; color: #FFFFFF; /* UPDATED: Clean White */ flex: 0 0 auto; }
+
+/* Nav Links */
+nav {
+    display: flex;
+    gap: 25px;
+    z-index: 1001;
+    flex: 1;
+    justify-content: center;
+}
+nav a {
+    text-decoration: none;
+    color: #FFFFFF; /* UPDATED: Clean White */
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #CC00FF; /* UPDATED: Vivid Electric Purple */
+    transition: width 0.3s;
+}
+nav a:hover::after { width: 100%; }
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex: 0 0 auto;
+}
+.social-links a {
+    color: #FFFFFF; /* UPDATED: Clean White */
+    font-size: 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    /* border: 1px solid #CC00FF; */
+    /*background: rgba(204, 0, 255, 0.2); /* UPDATED: Vivid Purple translucent */
+}
+.social-links a:hover {
+    color: #000000; /* UPDATED: Text color on hover (True Black) */
+    background: #CC00FF; /* UPDATED: Vivid Electric Purple */
+    transform: translateY(-2px);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #FFFFFF; /* UPDATED: Clean White */
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile Nav */
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .social-links { display: none; }
+
+    nav {
+        position: fixed;
+        top: 70px;
+        right: -250px;
+        width: 200px;
+        height: calc(100% - 70px);
+        flex-direction: column;
+        background: rgba(0,0,0,0.95); /* UPDATED: True Black translucent */
+        padding-top: 30px;
+        gap: 20px;
+        transition: right 0.3s ease;
+        z-index: 1100;
+    }
+
+    nav.active { right: 0; }
+}
+
+/* ===== Sections ===== */
+.section {
+    min-height: 100vh; /* Keep this general rule for all sections */
+    display: flex; 
+    flex-direction: column; 
+    /* MODIFIED: Align content to the top instead of center (was 'justify-content: center;') */
+    justify-content: flex-start; 
+    align-items: center;
+    padding: 70px 20px 50px; 
+    scroll-margin-top: 80px;
+    /* scroll-snap-align: start; /* Fully disabled for smooth scrolling */
+    border-radius: 0; /* Remove radius for seamless full-page feel */
+    margin-bottom: 0; /* No gaps between sections */
+    box-shadow: none; /* Remove shadows for clean stacking */
+    opacity: 1; /* Fully visible by default - no more hidden start */
+    transform: translateY(0); /* No initial slide */
+    transition: all 0.6s ease-out; /* Still animatable if JS adds effects */
+    overflow-y: auto; /* Internal scroll if content overflows */
+    background: #000000; /* UPDATED: Dark Charcoal to True Black */
+}
+
+.section.show { 
+    opacity: 1; 
+    transform: translateY(0); 
+    /* Optional: Add subtle scale or other effect if desired */
+    transform: scale(1.02); /* Slight zoom on reveal for emphasis */
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero (Home) - Special full-bleed */
+/* Hero (Home) - Special full-bleed */
+/* Hero (Home) - Special full-bleed */
+.hero {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%); /* Full width bleed */
+    /* MODIFIED: Ensure the section takes up at least the full viewport height */
+    min-height: 100vh;
+    /* MODIFIED: Increased top padding from 70px to 120px to push content down */
+    padding: 120px 20px 0; /* Increased top padding */
+    position: relative;
+    z-index: 0;
+    
+    /* FIX: Use flexbox to stack content and push the scroller to the bottom */
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; /* Pushes the first item (main content) to the top and the last item (scroller) to the bottom */
+    align-items: center; /* Keep content centered horizontally */
+
+    background:#000000; 
+    /* === Parallax Background Addition === */
+    background-image: url('assets/abstract-dark-texture.jpg'); 
+    background-size: cover;
+    background-attachment: fixed; 
+    /* ================================== */
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(26,26,26,0.3); 
+    z-index: 1;
+}
+
+/* === Hero Two-Column Layout Styles (New) === */
+.hero-main-content {
+    position: relative; 
+    z-index: 2; 
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; 
+    gap: 40px;
+    align-items: center; /* Center vertically */
+    /* MODIFIED: Increased padding-bottom to create space above the scroller */
+    padding: 50px 0; 
+    opacity: 1; 
+}
+.hero-text-content {
+    text-align: left; /* Align text content left in the column */
+}
+.hero h1, .hero p, .profession {
+    text-align: left; /* Override existing center alignment */
+    margin-left: 0;
+}
+.hero-text-content > div { /* Target the buttons flex container */
+    justify-content: flex-start !important; /* Align buttons left */
+}
+.hero-image-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.developer-illustration {
+    /* Made height equal to width */
+    width: 100%; 
+    height: auto; /* Changed to auto to maintain aspect ratio */
+    max-width: 350px;
+    
+    /* === KEY CHANGE: Perfect Circle and object-fit for good crop === */
+    aspect-ratio: 1 / 1; /* Ensures width and height are proportional (1:1) */
+    border-radius: 50%; /* Makes it a circle */
+    object-fit: cover; /* Ensures the image covers the circle without distortion */
+    
+    /* Keeping your visual effects */
+    box-shadow: 0px 0px 60px rgba(204, 0, 255, 0.4); /* Glow effect */
+    opacity: 1;
+}
+.developer.pulse { animation: pulseGlow 2s infinite; }
+
+/* Mobile Hero adjustments */
+@media (max-width: 900px) {
+    .hero-main-content {
+        grid-template-columns: 1fr; /* Stack into one column */
+        text-align: center;
+    }
+    .hero h1, .hero p, .profession, .hero-text-content {
+        text-align: center; /* Center everything when stacked */
+    }
+    .hero-text-content > div {
+        justify-content: center !important; /* Center buttons when stacked */
+    }
+    .hero-image-content {
+        order: -1; /* Move the image above the text on mobile */
+        margin-bottom: 30px;
+    }
+    .developer-illustration {
+        max-width: 250px;
+    }
+}
+/* === End Hero Two-Column Layout Styles === */
+
+
+/* Hero Content (Original elements adjusted for new layout) */
+.hero-content { 
+    position: relative; 
+    z-index: 2; 
+    text-align: center; /* Center text */
+    width: 100%;
+    max-width: 1200px; /* Match container */
+    opacity: 1; /* Ensure hero content is always visible */
+}
+.profession { 
+    color: #CC00FF; /* UPDATED: Vivid Electric Purple */
+    font-size: 16px; 
+    text-transform: uppercase; 
+    letter-spacing: 3px; 
+    margin-bottom: 15px; 
+    display: inline-block; /* Allows width control */
+    min-width: 140px; /* Reserves space for longest text ("Graphic Artist"); no shift */
+    text-align: left; /* Aligned left in the new column */
+    white-space: nowrap; /* Prevents wrapping during typing */
+}
+h1 { 
+    font-size: 52px; 
+    color: #FFFFFF; /* UPDATED: Clean White */
+    margin-bottom: 20px; 
+    opacity: 1; /* Force visibility */
+}
+.hero p { 
+    max-width: 650px; 
+    color: #B3B3B3; /* UPDATED: Light Gray */
+    margin: 0 0 30px 0; /* Adjusted margin for left alignment */
+    opacity: 1; /* Force visibility */
+}
+h2 { /* Ensure section headings are visible */
+    font-size: 36px;
+    color: #FFFFFF; /* UPDATED: Clean White */
+    margin-bottom: 20px;
+    opacity: 1;
+}
+p { /* General text visibility fallback */
+    opacity: 1;
+    color: #B3B3B3; /* UPDATED: Light Gray */
+}
+
+/* ===== Tech Stack Scroller (New Styles) ===== */
+.tech-stack-scroller {
+    width: 100%;
+    overflow: hidden; /* Hide the content outside the viewable area */
+    padding: 40px 0;
+    /* Removed margin-top to close the gap after the main content */
+    margin-top: 0; 
+    background: rgba(0,0,0,0.5); /* Semi-transparent black background */
+    border-top: 2px solid rgba(204, 0, 255, 0.2);
+    border-bottom: 2px solid rgba(204, 0, 255, 0.2);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    position: relative;
+    z-index: 2; /* Keep it above the parallax background */
+}
+
+.tech-stack-container {
+    display: flex;
+    white-space: nowrap; /* Prevent items from wrapping */
+    animation: scrollTechStack 40s linear infinite; /* Animation definition below */
+    padding-right: 100%; /* Important: Ensures a seamless loop space */
+}
+
+.tech-stack-container:hover {
+    animation-play-state: paused; /* Pause animation on hover */
+}
+
+.tech-stack-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 30px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #FFFFFF;
+    flex-shrink: 0; /* Prevents shrinking */
+}
+
+.tech-stack-item i {
+    font-size: 32px;
+    color: #CC00FF; /* Vivid Electric Purple */
+}
+
+/* Duplicated items for seamless scrolling effect */
+.tech-stack-container .tech-stack-item:last-child {
+    padding-right: 30px; /* No extra padding for the last item */
+}
+
+/* Animation for horizontal scrolling */
+@keyframes scrollTechStack {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Scroll exactly half of the duplicated content */
+    }
+}
+
+/* Mobile adjustment for Tech Stack */
+@media (max-width: 768px) {
+    .tech-stack-scroller {
+        padding: 20px 0;
+        margin-top: 20px;
+    }
+    .tech-stack-item {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+    .tech-stack-item i {
+        font-size: 24px;
+    }
+    @keyframes scrollTechStack {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+}
+/* ===== END Tech Stack Scroller (New Styles) ===== */
+
+/* ===== Buttons ===== */
+.btn, .btn-resume, .btn-send, .btn-view { 
+    border-radius: 50px; 
+    font-weight: 600; 
+    transition: all 0.3s ease; 
+    cursor: pointer; 
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    opacity: 1; /* Force button visibility */
+}
+.btn-projects, .btn-resume, .btn-send, .btn-view { 
+    background: #CC00FF; /* UPDATED: Vivid Electric Purple */
+    color: #000000; /* UPDATED: True Black text for contrast */
+    border: none; 
+    padding: 12px 28px; 
+}
+.btn-projects:hover, .btn-resume:hover, .btn-send:hover, .btn-view:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 20px rgba(204, 0, 255, 0.4); /* UPDATED: Vivid Purple shadow */
+}
+.btn-linkedin { 
+    background: transparent; 
+    border: 2px solid #CC00FF; /* UPDATED: Vivid Electric Purple */
+    color: #FFFFFF; /* UPDATED: Clean White */
+    padding: 12px 28px; 
+}
+.btn-linkedin:hover { 
+    background: #CC00FF; /* UPDATED: Vivid Electric Purple */
+    color: #000000; /* UPDATED: True Black text for contrast */
+    transform: translateY(-5px); 
+}
+
+/* Hero Buttons Layout */
+.hero-content > div { /* Targets the flex div for buttons in Hero */
+    display: flex; 
+    gap: 20px; 
+    justify-content: center; 
+    flex-wrap: wrap;
+}
+
+/* ===== Projects ===== */
+/* Featured Projects Title Styling - Slashes Removed */
+.projects h2 {
+    font-size: 62px;
+    font-weight: 700;
+    color: #FFFFFF; /* UPDATED: Clean White */
+    margin-bottom: 30px;
+    padding: 0; /* No padding needed without slashes */
+    text-align: center;
+}
+
+/* Override for Projects section to reduce side padding for wider feel */
+.projects {
+    padding: 70px 0 50px; /* Zero side padding for maximum width */
+}
+
+.project-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); /* Fixed 3 columns for side-by-side layout */
+    gap: 30px; /* Space between cards */
+    width: 100%; 
+    margin: 0 auto 30px; /* Center and no top margin */
+    max-width: 1200px; /* Match container width */
+    max-height: calc(100vh - 200px); /* Space for title and padding */
+    overflow-y: auto; /* Internal scroll if needed */
+    justify-items: stretch; /* Stretch cards to fill full width of columns */
+}
+.project-card { 
+    background: #1A1A1A; /* UPDATED: Dark Charcoal */
+    border-radius: 20px; /* Rounded corners like reference */
+    padding: 0; /* No internal padding; use child elements */
+    transition: transform 0.4s ease, box-shadow 0.4s ease; 
+    opacity: 1; /* Force card visibility */
+    width: 100%; /* Full width of grid cell */
+    height: 550px; /* Slightly taller for image prominence */
+    overflow: hidden; /* Prevent text spillover */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Subtle shadow */
+    border: 1px solid rgba(204, 0, 255, 0.2); /* UPDATED: Vivid Purple subtle border */
+    display: flex;
+    flex-direction: column;
+}
+.project-card:hover { 
+    transform: translateY(-10px); /* Subtle lift on hover */
+    box-shadow: 0 20px 40px rgba(204, 0, 255, 0.3); /* UPDATED: Vivid Purple glow on hover */
+}
+.project-card .project-image {
+    height: 250px; /* Taller image section like reference (prominent mockup) */
+    background: #000000; /* UPDATED: True Black placeholder for image */
+    border-radius: 20px 20px 0 0; /* Rounded top */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #B3B3B3; /* UPDATED: Light Gray */
+    font-size: 14px;
+    position: relative;
+    overflow: hidden;
+}
+/* For actual images: Add to HTML <div class="project-image"><img src="your-mockup.jpg" alt="Project Mockup" style="width:100%; height:100%; object-fit:cover;"></div> */
+.project-card h3 { 
+    color: #CC00FF; /* UPDATED: Clean White */
+    margin: 20px 20px 10px; /* Internal margins */
+    opacity: 1; 
+    font-size: 22px; 
+    font-weight: 600;
+}
+.project-card p {
+    color: #B3B3B3; /* UPDATED: Light Gray */
+    font-size: 13px;
+    opacity: 1;
+    margin: 0 20px 15px;
+    line-height: 1.5; 
+    flex-grow: 1; /* Expand to fill space */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 3 lines to prevent cutoff */
+    -webkit-box-orient: vertical;
+}
+.project-card .project-btn {
+    margin: 0 20px 15px;
+    background: transparent;
+    border: 1px solid #CC00FF; /* UPDATED: Vivid Electric Purple */
+    color: #FFFFFF; /* UPDATED: Clean White */
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    align-self: flex-start;
+    transition: all 0.3s ease;
+    position: relative; /* For arrow positioning if added via pseudo-element */
+}
+.project-card .project-btn::after {
+    content: '>'; /* Arrow like "Learn More >" */
+    margin-left: 5px;
+    font-weight: bold;
+}
+.project-card .project-btn:hover {
+    background: #CC00FF; /* UPDATED: Vivid Electric Purple */
+    color: #000000; /* UPDATED: True Black text for contrast */
+    transform: translateX(5px);
+}
+.project-card .tech-tags {
+    display: flex;
+    gap: 10px;
+    margin: 0 20px 20px;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    border-top: 1px solid rgba(204, 0, 255, 0.1); /* UPDATED: Vivid Purple separator */
+}
+.project-card .tech-tag {
+    background: rgba(204, 0, 255, 0.2); /* UPDATED: Vivid Purple translucent background */
+    color: #CC00FF; /* UPDATED: Vivid Electric Purple Accent */
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid #CC00FF; /* UPDATED: Vivid Purple border for emphasis */
+}
+
+/* Responsive: Stack on smaller screens */
+@media (max-width: 1024px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+        gap: 25px;
+        max-width: 800px;
+    }
+    .project-card {
+        height: 500px; /* Slightly shorter on tablet */
+    }
+    .project-card .project-image {
+        height: 200px;
+    }
+    .projects h2 {
+        font-size: 42px;
+        text-align: center;
+    }
+}
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 20px;
+        max-width: 400px;
+    }
+    .projects {
+        padding: 70px 20px 50px; /* Restore padding on mobile */
+    }
+    .projects h2 {
+        font-size: 36px;
+    }
+    .project-card {
+        height: 550px; /* Taller on mobile for better touch */
+    }
+    .project-card .project-image {
+        height: 250px;
+    }
+}
+
+/* About Me Section */
+
+.about{
+    /* MODIFIED: Increased top padding for better spacing from header */
+    /* padding-top: 120px;  */
+    min-height: 110vh;
+    padding: 70px 0px 8px;
+    align-items: flex-start;
+}
+.about-container-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; 
+    gap: 60px;
+    max-width: 1000px;
+    
+    /* FIX: REMOVED max-height to eliminate inner scrollbar */
+    height: auto; 
+    width: 100%;
+    
+    /* FIX: ALIGN items to the START of the grid to align description text and image */
+    align-items: flex-start; 
+    padding: 0;
+    overflow: visible; 
+}
+.about-container-grid {
+    display: grid;
+    /* REVERSED: 1.5 parts for content (LEFT), 1 part for image (RIGHT) */
+    grid-template-columns: 1.5fr 1fr; 
+    gap: 60px;
+    max-width: 1000px;
+    max-height: 600px;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    padding: 0;
+}
+
+.about-image {
+  width: 300px;             /* make width and height equal */
+  height: 300px;
+  border-radius: 50%;       /* circular shape */
+  overflow: hidden;         /* hides parts outside the circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;             /* optional: centers the circle */
+  position: relative;
+  top: -70px;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* ensures the image fills without stretching */
+  object-position: center;  /* centers the face/subject */
+}
+.cap {
+  padding-top: 10px;
+  position: relative;
+  top: -70px;
+}
+.cap p  { 
+    color: #FFFFFF;
+}
+
+.about-content {
+    text-align: left; /* ALIGNED LEFT for better reading flow with skills */
+}
+
+/* Override for About page specific content alignment */
+.about-content h2 {
+    /* MODIFIED: Made heading slightly smaller to balance with increased paragraph text */
+    font-size: 60px;
+    /* margin-bottom: 20px; */
+    text-align: center; 
+    padding-bottom: 10px;
+}
+.about-content p {
+    text-align: left; /* Force paragraph text to align left */
+    /* margin: 0 0 10px 0; */
+    max-width: none; 
+    color: #FFFFFF;
+}
+
+.cert-title{
+    padding-top: 30px;
+    position: relative;
+    bottom: -30px;
+    
+}
+.cert-title h2{
+    color: #FFFFFF;
+    font-size: 60px;
+}
+
+.far.fa-edit{
+    color: #FFFFFF;
+}
+.carousel {
+  position: relative;
+  max-width: 550px; /* Adjust to your image width */
+  margin: auto;
+  padding-top: 50px;
+  overflow: hidden; /* Hide overflow for smooth transitions */
+  
+}
+
+.carousel-images {
+  display: flex;
+  width: 90%;
+  height: 90%;
+  transition: transform 0.6s ease;
+  text-align: center;
+}
+
+.slide {
+  min-width: 100%; 
+  display: block; 
+  /* align-items: center; */
+  border: 1px solid #CC00FF;
+  border-radius: 30px;
+  overflow: hidden;
+  
+  /* Resetting all previous transform conflicts (must be applied to prevent stacking issues) */
+  transition: transform 0.8s ease, box-shadow 0.4s ease, scale 0.6s ease;
+  transform: none !important; 
+  box-shadow: none !important; 
+  
+  /* Initial size and z-index for the 3D stack effect */
+  scale: 0.8;
+  z-index: 1;
+  opacity: 0.5;
+  right: 5px;
+}
+
+/* FIX: CENTER SLIDE (Bigger) */
+.slide.active {
+  scale: 0.9; /* Full size */
+  opacity: 1; /* Fully visible */
+  z-index: 20; /* Ensure it overlaps side slides */
+  
+  
+  /* Strong glow for the current certificate */
+  box-shadow: 0 0 50px rgba(204, 0, 255, 0.7), 0 15px 40px rgba(0, 0, 0, 0.9);
+  right: 15px;
+  /* REMOVED: transform: scale(1.02) translate(5px, -5px) or any hover effect */
+  transform: translateX(0) !important;
+}
+
+/* NEW: SIDE SLIDES (Smaller) */
+.slide.side-left, .slide.side-right {
+  scale: 0.8; /* Smaller size */
+  opacity: 0.7; /* Slightly faded */
+  z-index: 15;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+
+}
+
+/* NEW: Horizontal Positioning for the side views */
+/* The carousel images container handles the main slide movement,
+   these translate the side items slightly inwards for a more dramatic stack */
+.slide.side-left {
+    /* Pushes the left slide right, overlapping the main view slightly */
+    transform: translateX(calc(100% - 100px)) !important; 
+}
+.slide.side-right {
+    /* Pushes the right slide left, overlapping the main view slightly */
+    transform: translateX(calc(-100% + 100px)) !important; 
+}
+
+/* Hover effect should only apply to the active slide for maximum clarity */
+.slide.active:hover {
+  transform: scale(1.02) !important; /* Slightly enlarge active slide on hover */
+  box-shadow: 0 0 70px rgba(204, 0, 255, 0.9), 0 20px 50px rgba(0, 0, 0, 0.9);
+}
+
+/* Ensure images fit the newly scaled slide area */
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* MODIFIED: Apply nudge animation to prev/next buttons */
+/* MODIFIED: Styling for prev/next buttons (Rectangular, No Shake) */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  /* REMOVED: animation property */
+  
+  /* MODIFIED: Rectangular button look */
+  background-color: rgba(204, 0, 255, 0.8); /* Semi-transparent purple background */
+  color: #000000; /* Black arrow for contrast */
+  border: none; /* Removed the neon border */
+  
+  padding: 10px 15px; /* Added more padding to make it a rounded rectangle */
+  cursor: pointer;
+  font-size: 20px; /* Slightly smaller arrows */
+  z-index: 10; 
+  border-radius: 8px; /* Rounded rectangular shape */
+  transition: all 0.3s ease;
+  
+  /* Initial subtle glow */
+  box-shadow: 0 0 10px rgba(204, 0, 255, 0.7); 
+}
+
+.prev { left: 5px; }
+
+.next { right: 5px; }
+
+/* MODIFIED: Hover effect (No shake, uses translate and scale) */
+.prev:hover, .next:hover {
+  /* REMOVED: animation-play-state: paused; */
+  
+  background-color: #FFFFFF; /* White on hover */
+  color: #CC00FF; /* Purple arrow on hover */
+  
+  /* Execute the specific hover transform (translate and scale) */
+  transform: translateY(-50%) scale(1.1) translateX(5px); 
+  box-shadow: 0 0 20px rgba(204, 0, 255, 1.0); /* Max glow on hover */
+}
+
+/* Overriding the generic transform for the left button */
+.prev:hover {
+    transform: translateY(-50%) scale(1.1) translateX(-5px);
+}
+
+/* IMPORTANT: 
+   You must also go back and remove the 'animation' and 'animation-play-state' 
+   properties from the .btn-projects, .btn-linkedin, etc. styles
+   to stop them from shaking! 
+*/
+
+/* Gentle left-right shake/nudge animation */
+@keyframes buttonNudge {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-3px); /* Nudge left */
+    }
+    75% {
+        transform: translateX(3px);  /* Nudge right */
+    }
+}
+/* === New Skills Block Styling === */
+.skills-block {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Divider line */
+    text-align: left; 
+}
+
+.skills-block h3 {
+    font-size: 18px;
+    color: #FFFFFF; 
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.skills-grid-icons {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.skills-grid-icons i {
+    font-size: 36px;
+    color: #CC00FF; /* Vivid Electric Purple */
+    transition: transform 0.2s ease;
+}
+
+.skills-grid-icons i:hover {
+    transform: scale(1.15) rotate(-3deg);
+    color: #FFFFFF; 
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    background: rgba(204, 0, 255, 0.1); /* Vivid Purple translucent background */
+    color: #CC00FF; /* Vivid Electric Purple Accent */
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid #CC00FF; 
+}
+/* === End New Skills Block Styling === */
+
+
+/* Adjust 404 image position to follow left alignment */
+.about-content .desc {
+    /* Kept the margin-top for spacing */
+    margin-top: 20px; 
+    /* Removed text-align: left here, let the p rule handle it */
+}
+
+/* MODIFIED: Make About me paragraph text bigger (e.g., 18px or 1.1em) */
+.about-content .desc p {
+    text-align: left; /* Aligns the text content to the left */
+    font-size: 18px; /* INCREASED FONT SIZE */
+    line-height: 1.7; /* Increased line height for readability */
+    max-width: none; /* Override any max-width set for centered paragraphs */
+}
+/* Responsive adjustment for the two-column layout */
+@media (max-width: 900px) {
+    .about-container-grid {
+        grid-template-columns: 1fr; /* Stack columns */
+        gap: 30px;
+        /* When stacked, we should center everything again */
+        text-align: center;
+    }
+    .about-image {
+        height: 300px;
+        margin: 0 auto;
+        max-width: 400px; 
+    }
+    .about-content {
+        padding: 0 10px;
+        text-align: center; /* Center content when stacked */
+    }
+    .about-content h2 {
+        font-size: 48px; /* Ensure mobile heading is responsive */
+    }
+    .about-content .desc p {
+        font-size: 16px; /* Adjust paragraph size down on mobile */
+        line-height: 1.6;
+    }
+    .about-content h2, .about-content p, .about-content .desc p, .skills-block {
+        text-align: center; /* Override specific alignments to center everything on mobile */
+    }
+    .skills-grid-icons, .skills-list {
+        justify-content: center; /* Center icons and tags on mobile */
+    }
+    .about-content .btn-resume {
+        margin: 0 auto; /* Center button on mobile */
+    }
+}
+
+/* ===== About & Contact ===== */
+.about, .projects, .contact { 
+    background: #000000; /* UPDATED: Dark Charcoal to True Black */
+}
+.about p, .projects p { 
+    max-width: 650px; 
+    color: #FFFFFF; /* UPDATED: Light Gray */
+    /* margin: 0 auto 20px;  */
+    text-align: center; 
+    opacity: 1; 
+}
+
+/* Contact Form and Input Styling (Minimalistic with defined layout) */
+.contact p.subtitle {
+    max-width: 650px; 
+    color: #B3B3B3; /* UPDATED: Light Gray */
+    margin: 0 auto 60px; 
+    text-align: center; 
+    font-weight: 300; 
+}
+
+/* Main Contact Container - Matches image layout */
+.contact-grid {
+    display: flex; 
+    max-width: 900px; 
+    margin: 0 auto;
+    background: #1A1A1A; /* Dark Charcoal remains the outer color */
+    border: none; /* Removed the subtle border */
+    border-radius: 20px; 
+    overflow: hidden; 
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7); /* Deeper shadow for depth */
+    min-height: 400px; 
+}
+
+/* Left Column: Contact Info */
+/* MODIFIED: Left Column: Contact Info */
+.contact-info {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    background-color: #CC00FF; /* Vivid Electric Purple as background */
+    color: #000000; /* Text color set to True Black for high contrast */
+}
+/* Removed vertical separator ::after */
+.contact-info::after { 
+    display: none; 
+}
+.contact-info h3 {
+    color: #000000; /* Heading text is black */
+    font-size: 16px; 
+    margin-top: 0; 
+    margin-bottom: 15px; 
+    font-weight: 700; /* Slightly bolder headings */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.contact-info .info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; 
+    color: #000000; /* Item text color is black */
+    padding: 0;
+    border-radius: 0; 
+    border: none;
+    transition: color 0.3s;
+}
+.contact-info .info-item:hover {
+    color: #1A1A1A; /* Darker text on hover */
+    background: none;
+}
+.contact-info .info-item .icon {
+    font-size: 20px; /* Slightly larger icons */
+    margin-right: 15px;
+    color: #000000; /* Icons are black */
+    min-width: 20px;
+    transition: color 0.3s;
+}
+.contact-info .info-item a {
+    color: #000000; /* Link text is black */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.contact-info .info-item a:hover {
+    color: #FFFFFF; /* Darker link text on hover */
+}
+/* This div wraps direct contact info (email, phone) */
+.contact-details { 
+    flex-grow: 1; /* Allows it to take up available space above social links */
+}
+
+
+/* Social Links for Contact Section - At the bottom of left column */
+/* MODIFIED: Social Links for Contact Section - At the bottom of left column */
+.social-links-contact {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    align-self: flex-start;
+}
+.social-links-contact a {
+    color: #CC00FF; /* Icon color is Purple */
+    font-size: 18px;
+    background: #000000; /* Background is Black */
+    border: 1px solid #000000; /* Black border */
+    border-radius: 50%;
+    width: 35px; 
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+.social-links-contact a:hover {
+    color: #FFFFFF; /* Text color on hover (White) */
+    background: #1A1A1A; /* Dark Charcoal background on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: none;
+}
+
+/* Right Column: Contact Form */
+.contact-form { 
+    flex: 1.5; /* Takes up 1.5 fractions of space */
+    display: flex; 
+    flex-direction: column; 
+    padding: 40px; /* Padding inside the form column */
+    opacity: 1;
+    justify-content: center; /* Center form fields vertically */
+}
+
+/* MODIFIED: Contact Form Fields */
+.con-head{
+    font-size: 62px;
+    text-align: center;
+}
+.contact input, .contact textarea { 
+    margin-bottom: 20px; 
+    padding: 15px; 
+    border-radius: 8px; /* Slightly more rounded */
+    border: 1px solid #333333; /* Darker, less noticeable border */
+    background: #000000; /* True Black for fields */
+    color: #FFFFFF; 
+    font-size: 16px; 
+    opacity: 1;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.contact input:focus, .contact textarea:focus {
+    border-color: #CC00FF; 
+    box-shadow: 0 0 10px rgba(204, 0, 255, 0.6); /* Brighter, more focused glow */
+    outline: none;
+}
+.contact textarea { 
+    resize: vertical; 
+    min-height: 120px; 
+}
+.contact .btn-send {
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 8px; /* Slightly rounded button */
+    align-self: flex-start; /* Aligns to the left */
+    margin-top: 10px; /* Space between last input and button */
+}
+.contact .btn-send:hover {
+    transform: none;
+    box-shadow: 0 0 10px rgba(204, 0, 255, 0.5); /* UPDATED: Vivid Purple shadow */
+}
+
+
+/* Responsive Adjustments for Contact */
+@media (max-width: 768px) {
+    .contact-grid {
+        flex-direction: column; /* Stack columns on small screens */
+        border-radius: 10px; /* Slightly less rounded on mobile */
+        max-width: 95%; /* Adjust width for mobile */
+        min-height: auto; /* Allow height to auto-adjust */
+    }
+    .contact-info {
+        padding: 30px;
+        align-items: center; /* Center items in info column */
+        text-align: center;
+    }
+    .contact-info::after { /* Remove vertical separator on mobile */
+        display: none;
+    }
+    .contact-info .info-item {
+        justify-content: center;
+    }
+    .social-links-contact {
+        justify-content: center;
+        align-self: center; /* Center social links */
+        margin-top: 20px;
+    }
+    .contact-form {
+        padding: 30px;
+    }
+    .contact .btn-send {
+        align-self: center; /* Center button on mobile */
+    }
+}
+/* ===== Footer ===== */
+footer { 
+    text-align: center; 
+    padding: 25px 0; 
+    color: #B3B3B3; /* UPDATED: Light Gray */
+    background: #000000; /* UPDATED: True Black */
+    height: auto; /* Not snapped; stays at bottom */
+    /* scroll-snap-align: none; /* No longer needed */
+    opacity: 1;
+}
+
+/* ===== Button Pulse Animation ===== */
+@keyframes pulseGlow {
+    0% { box-shadow: 0 8px 25px rgba(204, 0, 255, 0.4), 0 0 15px rgba(204, 0, 255, 0.3) inset; } /* UPDATED: Vivid Purple */
+    50% { box-shadow: 0 12px 30px rgba(204, 0, 255, 0.6), 0 0 20px rgba(204, 0, 255, 0.5) inset; } /* UPDATED: Vivid Purple */
+    100% { box-shadow: 0 8px 25px rgba(204, 0, 255, 0.4), 0 0 15px rgba(204, 0, 255, 0.3) inset; } /* UPDATED: Vivid Purple */
+}
+.btn.pulse { animation: pulseGlow 2s infinite; }
+
+.my-name {
+    color: #CC00FF;      /* UPDATED: Vivid Electric Purple */
+    font-weight: bold;   /* makes it stand out */
+    font-size: 1.2em;
+}
+
+.txt{
+    color: #CC00FF;      /* UPDATED: Vivid Electric Purple */
+    font-weight: bold;   /* makes it stand out */
+    font-size: 1.1em;
+}
+
+.thank-you-message {
+  text-align: center;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

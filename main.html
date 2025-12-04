@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akashh | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/new-fav.png" type="image/x-icon">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="name">Akashh</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/akashh-a-g-4bab4a24b/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Aka-bot2" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://instagram.com/_akashh.06" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+   <section id="home" class="hero">
+        <div class="hero-main-content container"> 
+            <div class="hero-text-content"> 
+                <div id="changingProfession" class="profession"></div>
+                <h1>Hello, I am <span class="my-name" data-aos="fade-up" data-aos-delay="100">A</span><span class="my-name" data-aos="fade-up" data-aos-delay="200">k</span><span class="my-name" data-aos="fade-up" data-aos-delay="300">a</span><span class="my-name" data-aos="fade-up" data-aos-delay="400">s</span><span class="my-name" data-aos="fade-up" data-aos-delay="500">h</span><span class="my-name" data-aos="fade-up" data-aos-delay="600">h</span></h1>
+                <p>I am <span class="txt">Gamer  <i class="fas fa-gamepad"></i></span> who is forced to study. Now passionate about <span class="txt">Coding</span> and <span class="txt">Problem Solving</span></p>
+                <div style="display: flex; gap: 20px; justify-content: flex-start; flex-wrap: wrap;"> 
+                    <a href="#projects" class="btn btn-projects">Projects</a>
+                    <a href="https://www.linkedin.com/in/akashh-a-g-4bab4a24b/" class="btn btn-linkedin">LinkedIn</a>
+                </div>
+            </div>
+            
+            <div class="hero-image-content fade-in" data-aos="zoom-in" data-aos-delay="500"> 
+                <img src="assets/monke.jpg" alt="Developer Avatar" class="developer-illustration" style="width:100%; height:auto;"> 
+            </div>
+
+        </div>
+
+        <div class="tech-stack-scroller">
+            <div class="tech-stack-container">
+                <div class="tech-stack-item"><i class="fab fa-html5"></i> HTML5</div>
+                <div class="tech-stack-item"><i class="fab fa-css3-alt"></i> CSS3</div>
+                <div class="tech-stack-item"><i class="fab fa-js"></i> JavaScript</div>
+                <div class="tech-stack-item"><i class="fab fa-python"></i> Python</div>
+                <div class="tech-stack-item"><i class="fab fa-github"></i> GitHub</div>
+                <div class="tech-stack-item"><i class="fas fa-c"></i> C</div>
+                <div class="tech-stack-item"><i class="fab fa-figma"></i> Figma</div>
+                
+                <div class="tech-stack-item"><i class="fab fa-html5"></i> HTML5</div>
+                <div class="tech-stack-item"><i class="fab fa-css3-alt"></i> CSS3</div>
+                <div class="tech-stack-item"><i class="fab fa-js"></i> JavaScript</div>
+                <div class="tech-stack-item"><i class="fab fa-python"></i> Python</div>
+                <div class="tech-stack-item"><i class="fab fa-github"></i> GitHub</div>
+                <div class="tech-stack-item"><i class="fas fa-c"></i> C</div>
+                <div class="tech-stack-item"><i class="fab fa-figma"></i> Figma</div>
+            </div>
+        </div>
+        </section>
+
+    <section id="about" class="section about">
+        <div class="container about-container-grid">
+        <div class="about-content">
+            <h2>About me</h2>
+            <div class="desc">
+               <p> I’m Akashh — a Sophomore Computer Science student at SSSIHL, passionate about building things that blend logic and creativity.
+I love solving complex problems, experimenting with new technologies, and crafting digital experiences that actually feel good to use.
+When I’m not coding, you’ll find me behind a camera  <i class="fas fa-camera"></i> writing thoughts that turn into stories <a href="https://medium.com/@akashhganesh"><i class="far fa-edit"></i></a> or playing sports <i class="fas fa-dumbbell"></i>.
+               </p></div>
+<div class="carousel">
+  <button class="prev" onclick="changeSlide(-1)">&#10094;</button> <!-- Left arrow -->
+  <div class="carousel-images">
+    <img src="assets/image1.JPG" class="slide active" alt="Image 1">
+    <img src="assets/image2.JPG" class="slide" alt="Image 2">
+    <img src="assets/image3.JPG" class="slide" alt="Image 3">
+    <img src="assets/image4.jpg" class="slide" alt="Image 3">
+  </div>
+  <button class="next" onclick="changeSlide(1)">&#10095;</button> <!-- Right arrow -->
+</div>
+        </div>
+        <div class="image-cap">
+        <div class="about-image" data-aos="zoom-in">
+            <img src="assets/me.JPG" alt="My pic" style="width:100%; height:100%;">
+        </div>
+        <div class="cap">
+            <p>yes thats me 😎</p>
+        </div>
+        <div class="cert-title">
+            <h2>Certifications</h2>
+         </div>
+        </div>
+        <!-- can use this to display certificates ig -->
+  
+</div>
+    
+    </section>
+
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                <!-- Project Card 1: Updated Content -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/Filo.png" alt="Simple FTP" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <h3>Filo</h3>
+                    <p>Filo (File Loader) is a lightweight HTTP-based file transfer system that makes uploading and downloading files fast and simple</p>
+                    <a href="https://github.com/Aka-bot2/FTP" class="project-btn" target="_blank">View Code</a>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JS</span>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: Updated Content -->
+                <!-- <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/video-editor-mockup.jpg" alt="Video Editor Tool Mockup" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <h3>ProCut Video Editor</h3>
+                    <p>Desktop app for seamless video editing, effects, and exports using Electron, with drag-and-drop timeline and AI-powered clips.</p>
+                    <a href="https://your-demo-link.com/procut" class="project-btn" target="_blank">Live Demo ></a>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Electron</span>
+                        <span class="tech-tag">FFmpeg</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">TensorFlow.js</span>
+                    </div>
+                </div>  -->
+
+                <!-- Project Card 3: Updated Content -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/sec.jpg" alt="Secret Project" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <h3>Secret Project</h3>
+                    <p>Under construction, stay tuned for it's launch.</p>
+                    <a href="" class="project-btn" target="_blank">View Code</a>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">JS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact">
+    <div class="container">
+        <h2 class="con-head">Get in Touch</h2>
+        <p class="subtitle">Got ideas, questions, or memes? Let’s talk! Shoot me a message.</p>
+        
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="contact-details"> <h3>Direct Contact</h3>
+    <div class="info-item">
+        <i class="fas fa-envelope icon"></i>
+        <a href="mailto:akashhganesh@gmail.com">akashhganesh@gmail.com</a>
+    </div>
+    <div class="info-item">
+        <i class="fas fa-phone icon"></i>
+        <span>+91 8056326900</span>
+    </div>
+</div> <h3>What's stopping you??😉</h3> <h5>Chennai, Tamil Nadu</h5> <div class="social-links-contact">
+    <a href="https://www.linkedin.com/in/akashh-a-g-4bab4a24b/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/Aka-bot2" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://instagram.com/_akashh.06" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+</div>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+
+                <button type="submit" class="btn btn-send pulse"><i class="fas fa-paper-plane"></i> Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+    <footer>
+        <p>Akashh © 2025</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+    AOS.init({
+    duration: 900,   // smooth, not too fast
+    easing: 'ease-out-quart', 
+    once: true       // only animate once (no replay spam)
+    });
+    </script>
+
+</body>
+</html>
